@@ -22,7 +22,7 @@ for bg_tile_image_file in bg_tile_image_files:
 
 # プレイヤー関連
 player_image = pygame.image.load("static/player.png")  # 画像を読み込む
-player_move_unit = 10  # プレイヤー移動時の単位距離
+player_move_unit = 5  # プレイヤー移動時の単位距離
 player_image_width = 100
 player_image_height = round(player_image.get_height() / player_image.get_width() * player_image_width)
 player_image = pygame.transform.scale(player_image, [player_image_width, player_image_height])  # 画像のサイズを指定する
@@ -101,10 +101,10 @@ while running:
             player_rect.x += player_move_unit
     if keys[pygame.K_UP]:
         if player_rect.y >= 60:
-            player_rect.y -= 10
+            player_rect.y -= player_move_unit
     if keys[pygame.K_DOWN]:
         if (player_rect.y + player_image_height) <= screen_height - player_move_unit:
-            player_rect.y += 10
+            player_rect.y += player_move_unit
 
     # プレイヤーがコインに触れた時の処理
     for coin_rect in coins_rect:
